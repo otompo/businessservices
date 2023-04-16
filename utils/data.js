@@ -1,0 +1,152 @@
+import { HiOutlineDesktopComputer } from "react-icons/hi";
+import { CiMobile1 } from "react-icons/ci";
+import { MdWorkspacesOutline } from "react-icons/md";
+export const projectExperience = [
+  {
+    name: "Website Design",
+    projects: 76,
+    icon: HiOutlineDesktopComputer,
+    bg: "#286F6C",
+  },
+  {
+    name: "Mobile App Design",
+    projects: 63,
+    icon: CiMobile1,
+    bg: "#EEC048",
+  },
+  {
+    name: "Brand Identity",
+    projects: 47,
+    icon: MdWorkspacesOutline,
+    bg: "#F26440",
+  },
+];
+
+export const cleaningService = [
+  {
+    title: "Cleaning Service",
+    description:
+      "Our cleaning service provides professional cleaning solutions for homes and businesses. We specialize in using environmentally friendly cleaning products and techniques to ensure that your space is not only clean but also safe for your family, employees, and customers. With our experienced and reliable cleaning staff, you can be confident that your space will be sparkling clean and hygienic.",
+  },
+];
+export const healthService = [
+  {
+    title: "Health Service",
+    description:
+      "Our healthcare service offers comprehensive medical care and support for individuals and families. We provide personalized and compassionate care to help you achieve optimal health and wellness. Our team of experienced healthcare professionals includes doctors, nurses, and other specialists who are committed to providing high-quality medical care. Whether you need a routine check-up or specialized treatment, we are here to help you every step of the way..",
+  },
+];
+
+export const workExp = [
+  {
+    place: "About US:",
+
+    detail:
+      "At Grace Business Services, we specialize in providing top-notch cleaning and healthcare services to our clients. With a focus on delivering exceptional quality and customer satisfaction, we are dedicated to creating a clean, safe, and healthy environment for our clients.   We understand the importance of maintaining a clean and hygienic environment, especially in healthcare settings where patient safety is paramount. That's why we use only the latest techniques and equipment, combined with our team's expertise, to ensure that we provide the best possible services to our clients.     We take pride in our commitment to excellence and strive to exceed expectations in every aspect of our business. From our experienced and well-trained employees to our comprehensive range of services, we are confident that we can provide the best solutions to meet our clients' needs.",
+  },
+  {
+    place: "Mission Statement:",
+    detail:
+      "Our mission is to provide high-quality cleaning and healthcare services that promote a clean, safe, and healthy environment for our clients. We are committed to using the latest techniques and equipment to ensure that our services exceed expectations, and to providing our employees with a safe and rewarding work environment.",
+  },
+  {
+    place: "Vision Statement:",
+    detail:
+      "Our vision is to be the premier provider of cleaning and healthcare services in the industry, recognized for our exceptional quality, customer service, and commitment to the well-being of our clients and employees. We strive to innovate and evolve with the changing needs of our customers, while maintaining our unwavering dedication to excellence.",
+  },
+];
+
+export const comments = [
+  {
+    name: "Anamika Sandula",
+    comment:
+      "I have been a client of this company for years, and I am always impressed with the level of cleanliness and attention to detail they provide. Their healthcare cleaning services are second to none, and I have complete confidence in their ability to maintain a safe and healthy environment for my patients.",
+    img: "/people2.png",
+  },
+  {
+    name: "Anamika Sandula",
+    comment:
+      "The team at this company is fantastic. They are professional, reliable, and always go above and beyond to ensure that our facility is spotless. Their expertise in healthcare cleaning is invaluable, and we appreciate their dedication to keeping our patients and staff safe.",
+    img: "/people1.png",
+  },
+  {
+    name: "Anamika Sandula",
+    comment:
+      "I have used this company for both personal and professional cleaning services, and I cannot recommend them enough. Their attention to detail is exceptional, and they always leave my space looking and feeling fresh and clean. Their healthcare cleaning services are particularly impressive, and I feel confident knowing that they take every precaution to keep my family and clients safe.",
+    img: "/people2.png",
+  },
+  {
+    name: "Anamika Sandula",
+    comment:
+      "I am so impressed with the level of professionalism and care provided by this company. Their healthcare cleaning services are thorough and effective, and I appreciate their attention to detail and commitment to keeping our facility safe and clean. I highly recommend them to anyone in need of top-notch cleaning services.",
+    img: "/people1.png",
+  },
+  {
+    name: "Anamika Sandula",
+    comment:
+      "The team at this company is simply amazing. They are friendly, efficient, and incredibly skilled at what they do. Their healthcare cleaning services are exceptional, and I feel completely confident in their ability to keep our facility clean and safe. Thank you for all that you do!",
+    img: "/people2.png",
+  },
+  {
+    name: "Anamika Sandula",
+    comment:
+      "Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    img: "/people1.png",
+  },
+  {
+    name: "Anamika Sandula",
+    comment:
+      "Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    img: "/people2.png",
+  },
+  {
+    name: "Anamika Sandula",
+    comment:
+      "Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    img: "/people1.png",
+  },
+  {
+    name: "Anamika Sandula",
+    comment:
+      "Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    img: "/people2.png",
+  },
+];
+
+export const sliderSettings = {
+  dots: true,
+  infinite: false,
+  speed: 1000,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  initialSlide: 0,
+  touchMove: true,
+  useCSS: true,
+
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 1000,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};

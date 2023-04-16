@@ -1,0 +1,131 @@
+@import '../../styles/contants.scss';
+
+.wrapper {
+    overflow: hidden;
+    // height: 710px;
+    .container {
+        position: relative;
+        z-index: 1;
+       
+        .upperElements {
+            @media (max-width: $sm) {
+                justify-content: center;
+                text-align: center;
+                gap: 2rem;
+                
+            }
+
+            img {
+                @media (max-width: $sm ) {
+                    width: 13rem;
+                    height: 10rem;
+                }
+                margin-bottom: -5px;
+            }
+            
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+           
+        }
+        .slogan{
+            @media (max-width: $sm ) {
+                top: 8%;
+                left: 3rem;
+                padding-top: 0rem;
+                font-size: 12px;
+            }
+            
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            top: 39%;
+            left: 0;
+        }
+
+        .lowerElements {
+           
+            @media (max-width: $sm), (max-width: $md) {
+                margin-top: 4rem;
+                gap: 2rem;
+                justify-content: center;
+            }
+            margin-top: 12rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            .button {
+                
+               background-color: #ec60a9;
+               color: #fff;
+               font-size: 1.5rem;
+               font-weight: 500;
+               padding: 1rem;
+               cursor: pointer;
+               border: 1px solid #fff;
+               border-radius: 5px;
+            }
+
+            // .certificate {
+            //     display: flex;
+            //     flex-direction: column;
+            //     align-items: center;
+
+            //     img {
+            //         margin-bottom: 1rem;
+            //         width: 3.5rem;
+            //     }
+            // }
+            .stats {
+                justify-content: flex-start;
+                gap: 4rem;
+
+                .stat {
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    color: #fff;
+                }
+            }
+        }
+
+        .person {
+            @media (max-width: $sm ), (max-width: $md) {
+                position: relative;
+                left: 0;
+                background-size: 20rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-position: bottom;
+            }
+            position: absolute;
+            bottom: -2rem;
+            margin: auto;
+            background-image: url("/splash.png");
+            background-repeat: no-repeat;
+            background-size: 23rem;
+            left: 33%;
+
+            img {
+                @media (max-width: $sm ) {
+                    width: 22rem;
+                    height: 26rem;
+                }
+                margin-bottom: -5px;
+            }
+        }
+
+        .email {
+            @media (max-width: $sm ) {
+                position: relative;
+                display: none;
+            }
+            position: absolute;
+            top: 45%;
+            left: 0;
+            color: white;
+            font-size: 25px;
+        }
+    }
+}
