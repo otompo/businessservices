@@ -20,7 +20,7 @@ const Bookings = () => {
         >
           <div>
             <span className="primaryText">Book Us Now</span>
-            <p style={{ marginTop: "10px" }}>
+            <p style={{ marginTop: "10px", fontSize: "18px" }}>
               Perfect solution for digital experience
             </p>
           </div>
