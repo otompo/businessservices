@@ -4,7 +4,7 @@ import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import Hero from "../components/Hero/Hero";
 import People from "../components/People/People";
-import Portfolio from "../components/Portfolio/Portfolio";
+import Bookings from "../components/Bookings/Bookings";
 import Aboutus from "../components/Aboutus/Aboutus";
 import css from "../styles/App.module.scss";
 import Head from "next/head";
@@ -17,7 +17,7 @@ const App = () => {
         <Hero />
         <Services />
         <Aboutus />
-        <Portfolio />
+        <Bookings />
         <People />
         <Footer />
       </div>
