@@ -37,6 +37,9 @@
             }
         }
         .bookingform {
+          @media (max-width: $sm) {
+           width: 300px;
+        }
             display: flex;
             flex-direction: column;
             width: 800px;
