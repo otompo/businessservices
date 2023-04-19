@@ -21,17 +21,17 @@ const Auth = () => {
     setLoading(true);
     if (!result.error) {
       const session = await getSession();
-      // console.log("session", session);
+      console.log("session", session);
 
       toast.success("SignIn Success");
 
-      if (session?.user?.role === "admin") {
-        router.push("/admin");
-      } else if (session?.user?.role === "author") {
-        router.push("/author");
-      } else {
-        router.push("/subscriber");
-      }
+      //   if (session?.user?.role === "admin") {
+      //     router.push("/admin");
+      //   } else if (session?.user?.role === "author") {
+      //     router.push("/author");
+      //   } else {
+      //     router.push("/subscriber");
+      //   }
 
       setLoading(false);
     } else {
