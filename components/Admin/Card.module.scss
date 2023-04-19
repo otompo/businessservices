@@ -1,0 +1,29 @@
+@import '../../styles/contants.scss';
+
+
+    .container{
+      
+      .card {
+        background-color: #fff;
+        border-radius: 4px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        padding: 1rem;
+        width: 300px;
+        margin: 0 auto;
+        
+        &__title {
+          font-size: 1.2rem;
+          font-weight: bold;
+          margin-bottom: 0.5rem;
+        }
+        
+        &__body {
+          font-size: 3rem;
+          line-height: 1.5;
+          font-weight: bold;
+        }
+        
+       
+      }
+      
+    }

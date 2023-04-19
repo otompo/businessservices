@@ -56,8 +56,8 @@ const Header = () => {
             className={`flexCenter ${css.phone}`}
             onClick={() => setMenuOpened(false)}
           >
-            <Link href="tel:+4591431537">
-              <p>+001 (313) 345 678</p>
+            <Link href="tel:+07482673887">
+              <p>07482673887</p>
             </Link>
             <BiPhoneCall size={"25px"} />
           </li>

@@ -113,6 +113,59 @@ export const comments = [
   },
 ];
 
+export const cleaningServices = [
+  {
+    title: "CLEAN ALL SURFACES & CABINETS",
+    description:
+      "We will clean all surfaces, cabinet faces, countertops, tables, etc. Eco-friendly cleaning chemicals available!",
+    img: "/clean-surface.webp",
+  },
+  {
+    title: "TRASH REMOVAL",
+    description: "We will remove and dispose of refuse and recyclables.",
+    img: "/trash.webp",
+  },
+  {
+    title: "VACUUM ALL CARPETS",
+    description: "We will vacuum all carpets, rugs and stairs.",
+    img: "/vacuum.webp",
+  },
+  {
+    title: "CHANGE LINENS & MAKE BEDS",
+    description: "We will change all linens and make beds.",
+    img: "/make-bed.webp",
+  },
+  {
+    title: "SWEEP & HAND-WASH ALL FLOORS",
+    description: "We will sweep and hand-wash all flooring surfaces.",
+    img: "/mop-floor.webp",
+  },
+  {
+    title: "DUST ALL SURFACES",
+    description:
+      "We will dust all surfaces, tops of fixtures, fans & book cases.",
+    img: "/dust.webp",
+  },
+  {
+    title: "CLEAN ALL SINKS & APPLIANCES",
+    description:
+      "We will clean all sinks, microwaves, refrigerators, ovens, etc.",
+    img: "/clean-sink.webp",
+  },
+  {
+    title: "CLEAN ALL TOILETS, SHOWERS & TUBS",
+    description:
+      "We will clean & sanitize all toilets, wash and remove soap scum from shower stalls and tubs.",
+    img: "/clean-bathroom.webp",
+  },
+  {
+    title: "LAUNDRY SERVICES",
+    description:
+      "We also offer laundry services at an additional cost. Please inquire.",
+    img: "/laundry.webp",
+  },
+];
+
 export const sliderSettings = {
   dots: true,
   infinite: false,
