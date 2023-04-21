@@ -32,7 +32,7 @@ const Hero = () => {
             {/* <p className={css.slogan}>
               We provide professional health care and cleaning solutions
             </p> */}
-            <Image src="/car.png" alt="image" width={410} height={280} />
+            <Image src="/logos.png" alt="image" width={450} height={280} />
           </motion.span>
         </div>
 

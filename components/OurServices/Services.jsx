@@ -6,12 +6,12 @@ import {
 } from "../../utils/data";
 import css from "./Services.module.scss";
 import { motion } from "framer-motion";
-import { fadeIn, staggerContainer, textVariant } from "../../utils/motion.js";
+import { staggerContainer } from "../../utils/motion.js";
 const Services = () => {
   return (
     <section className={css.wrapper}>
       <a className="anchor" id="services"></a>
-      <div class={css.mainTitle}>
+      <div className={css.mainTitle}>
         <p className={`primaryText `}>What do we help? </p>
       </div>
       <motion.div
@@ -45,20 +45,16 @@ const Services = () => {
         {/* right */}
         <motion.div className={css.rightSide}>
           {healthService.map((paragraph, i) => (
-            <>
+            <div key={i}>
               <p className="primaryText">{paragraph.title}:</p>
-              <span className="secondaryText" key={i}>
-                {paragraph.description}
-              </span>
-            </>
+              <span className="secondaryText">{paragraph.description}</span>
+            </div>
           ))}
           {cleaningService.map((paragraph, i) => (
-            <>
+            <div key={i}>
               <p className="primaryText">{paragraph.title}:</p>
-              <span className="secondaryText" key={i}>
-                {paragraph.description}
-              </span>
-            </>
+              <span className="secondaryText">{paragraph.description}</span>
+            </div>
           ))}
 
           {/* <div className={`flexCenter ${css.stats}`}>

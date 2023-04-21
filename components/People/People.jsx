@@ -5,11 +5,10 @@ import Slider from "react-slick";
 import { motion } from "framer-motion";
 import { footerVariants, staggerChildren } from "../../utils/motion";
 import Image from "next/image";
-// import Head from "next/head";
+
 const People = () => {
   return (
     <>
-      {/* <Head></Head> */}
       <motion.section
         variants={staggerChildren}
         initial="hidden"

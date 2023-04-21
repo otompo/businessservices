@@ -1,13 +1,21 @@
-var mongoose = require('mongoose');
+const mongoose = require("mongoose");
+const Env = process.env.NODE_ENV;
 
-const dbConnect = () => {
-  if (mongoose.connection.readyState >= 1) {
-    return;
-  }
+let DBURI;
 
-  mongoose
-    .connect(process.env.DB_URI, {})
-    .then((con) => console.log('Connected to database'));
+if (Env === "development") {
+  DBURI = process.env.DB_URI;
+} else {
+  DBURI = process.env.DB_URI;
+}
+
+const connectDB = async () => {
+  const conn = await mongoose.connect(DBURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+
+  console.log(`MongoDB connected: ${conn.connection.host}`);
 };
 
-export default dbConnect;
+module.exports = connectDB;

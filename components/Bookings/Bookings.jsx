@@ -29,11 +29,11 @@ const Bookings = () => {
         <div className={`flexCenter `}>
           <form className={`${css.bookingform}`}>
             <div className={`${css.formgroup}`}>
-              <label for="full-name">Full Name</label>
+              <label htmlFor="full-name">Full Name</label>
               <input type="text" id="full-name" name="full-name" required />
             </div>
             <div className={`${css.formgroup}`}>
-              <label for="phone-number">Phone Number</label>
+              <label htmlFor="phone-number">Phone Number</label>
               <input
                 type="tel"
                 id="phone-number"
@@ -42,20 +42,22 @@ const Bookings = () => {
               />
             </div>
             <div className={`${css.formgroup}`}>
-              <label for="email">Emial</label>
+              <label htmlFor="email">Email</label>
               <input type="email" id="email" name="email" required />
             </div>
             <div className={`${css.formgroup}`}>
-              <label for="select-date">Select Date</label>
+              <label htmlFor="select-date">Select Date</label>
               <input type="date" id="select-date" name="select-date" required />
             </div>
             <div className={`${css.formgroup}`}>
-              <label for="message">Message</label>
+              <label htmlFor="message">Message</label>
               <textarea id="message" name="message"></textarea>
             </div>
 
             <div className={`${css.formgroup}`}>
-              <label for="select-booking-option">Select Booking Option</label>
+              <label htmlFor="select-booking-option">
+                Select Booking Option
+              </label>
               <select
                 id="select-booking-option"
                 name="select-booking-option"
