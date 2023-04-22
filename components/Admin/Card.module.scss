@@ -4,7 +4,7 @@
     .container{
       
       .card {
-        background-color: #fff;
+        // background-color: #fff;
         border-radius: 4px;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         padding: 1rem;
@@ -15,12 +15,14 @@
           font-size: 1.2rem;
           font-weight: bold;
           margin-bottom: 0.5rem;
+          color: #fff;
         }
         
         &__body {
           font-size: 3rem;
           line-height: 1.5;
           font-weight: bold;
+          color: #fff;
         }
         
        

@@ -5,6 +5,7 @@ import { GoLocation } from "react-icons/go";
 import css from "./Footer.module.scss";
 import { motion } from "framer-motion";
 import Link from "next/link";
+
 const Footer = () => {
   return (
     <>
@@ -19,37 +20,17 @@ const Footer = () => {
           variants={footerVariants}
           className={`innerWidth yPaddings flexCenter ${css.container}`}
         >
-          <div className={css.left}>
+          <div className={css.address}>
             <span className="primaryText">Address</span>
-            <p className={`flexCenter ${css.location}`}>
+            <div className={css.row}>
               <GoLocation size={"25px"} />{" "}
-              <span>403 York Road Is9 6td Leads</span>
-            </p>
-            <p className={`flexCenter ${css.phone}`}>
+              <p className={css.text}>403 York Road Is9 6td Leads</p>
+            </div>
+            <div className={css.row}>
               <BiPhoneCall size={"25px"} />{" "}
-              <span className={css.text}>07482673887</span>
-            </p>
+              <p className={css.text}>07482673887</p>
+            </div>
           </div>
-          {/* <div className={css.left}>
-            <span className="primaryText">Quick Links</span>
-            <ul className={` ${css.menu}`}>
-              <li>
-                <Link href="#home">Home</Link>
-              </li>
-              <li>
-                <Link href="#services">Services</Link>
-              </li>
-              <li>
-                <Link href="#aboutus">About us</Link>
-              </li>
-              <li>
-                <Link href="#bookus">Book us</Link>
-              </li>
-              <li>
-                <Link href="#people">Testimonials</Link>
-              </li>
-            </ul>
-          </div> */}
 
           <div className={css.right}>
             <div className={css.info}>
@@ -75,6 +56,7 @@ const Footer = () => {
           </div>
         </motion.div>
       </motion.section>
+
       <div className={css.copyright}>
         <span className={css.copyrightText}>
           © Copyright {new Date().getFullYear()}, Grace Business Services,{" "}

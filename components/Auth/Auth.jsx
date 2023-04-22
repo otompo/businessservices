@@ -1,44 +1,70 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { toast } from "react-hot-toast";
-import { getSession, signIn } from "next-auth/react";
 import css from "./Auth.module.scss";
+import axios from "axios";
+import { AuthContext } from "../../context";
+import LoadingToRedirect from "../LoadingToRedirect";
+
 const Auth = () => {
   const router = useRouter();
   const [email, setEmail] = useState("sasco@gmail.com");
   const [password, setPassword] = useState("otompo123@");
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(true);
+
+  const {
+    state: { user },
+    dispatch,
+  } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (user?.token) getCurrentAdmin();
+  }, [user?.token]);
+
+  const getCurrentAdmin = async () => {
+    try {
+      const { data } = await axios.get("/api/currentadmin");
+      setSuccess(false);
+    } catch (err) {
+      console.log(err.response.data.message);
+      router.push("/");
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const result = await signIn("credentials", {
-      redirect: false,
-      email,
-      password,
-    });
-
-    setLoading(true);
-    if (!result.error) {
-      const session = await getSession();
-      // console.log("session", session);
-
-      toast.success("SignIn Success");
-
-      // if (session?.user?.role === "admin") {
-      //   router.push("/admin");
-      // } else if (session?.user?.role === "author") {
-      //   router.push("/author");
-      // } else {
-      //   router.push("/subscriber");
-      // }
-
+    try {
+      setLoading(true);
+      const { data } = await axios.post(`/api/login`, {
+        email,
+        password,
+      });
+      // setAuth(data);
+      dispatch({
+        type: "LOGIN",
+        payload: data,
+      });
+      // save in local storage
+      window.localStorage.setItem("user", JSON.stringify(data));
+      toast.success("Success");
       setLoading(false);
-    } else {
-      toast.error(result.error);
+      if (data?.user?.role === "admin") {
+        router.push("/admin");
+      } else {
+        router.push("/");
+      }
+    } catch (err) {
+      console.log(err.response.data.message);
+      toast.error(err.response.data.message);
       setLoading(false);
     }
   };
+
+  if (!success) {
+    return <LoadingToRedirect />;
+  }
+
   return (
     <div className={css.container}>
       <form onSubmit={handleSubmit} className={css.form}>

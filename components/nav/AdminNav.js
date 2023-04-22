@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Menu, Layout } from "antd";
 import { useWindowWidth } from "@react-hook/window-size";
 import {
@@ -17,11 +17,19 @@ import {
   UsergroupAddOutlined,
 } from "@ant-design/icons";
 import { useRouter } from "next/router";
+import { AuthContext } from "../../context";
+import { BiPowerOff } from "react-icons/bi";
+import axios from "axios";
 
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 
 const AdminNav = () => {
+  const {
+    state: { user },
+    dispatch,
+  } = useContext(AuthContext);
+
   const router = useRouter();
   // context
   // state
@@ -44,6 +52,13 @@ const AdminNav = () => {
 
   const activeName = (name) => `${current === name && "active"}`;
 
+  const logout = async () => {
+    dispatch({ type: "LOGOUT" });
+    window.localStorage.removeItem("user");
+    const { data } = await axios.get("/api/logout");
+    // toast(data.message);
+    router.push("/");
+  };
   return (
     <Sider
       collapsible
@@ -74,10 +89,24 @@ const AdminNav = () => {
         {/* posts */}
 
         <SubMenu key="10" icon={<HomeOutlined />} title="Home">
-          <Menu.Item key="7" icon={<VerticalAlignMiddleOutlined />}>
+          <Menu.Item key="4" icon={<VerticalAlignMiddleOutlined />}>
             <Link href="/admin/testimonials" legacyBehavior>
               <a className={activeName("/admin/testimonials")}>
                 Manage Testimonials
+              </a>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="5" icon={<VerticalAlignMiddleOutlined />}>
+            <Link href="/admin/testimonials" legacyBehavior>
+              <a className={activeName("/admin/testimonials")}>
+                Manage Bookings
+              </a>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="7" icon={<VerticalAlignMiddleOutlined />}>
+            <Link href="/admin/testimonials" legacyBehavior>
+              <a className={activeName("/admin/testimonials")}>
+                Manage Services
               </a>
             </Link>
           </Menu.Item>
@@ -88,6 +117,12 @@ const AdminNav = () => {
           <Link href="/admin/customize" legacyBehavior>
             <a className={activeName("/admin/customize")}>Customize</a>
           </Link>
+        </Menu.Item>
+
+        <Menu.Item key="15" icon={<BiPowerOff size={30} color="red" />}>
+          <p onClick={logout} className="logout" style={{ color: "red" }}>
+            <span className="fa fa-power-off m-2"></span>Log Out
+          </p>
         </Menu.Item>
       </Menu>
     </Sider>

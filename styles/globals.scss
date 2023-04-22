@@ -135,8 +135,14 @@
 }
 
 
-
+ .ant-layout-sider-trigger{
+  background-color: #0f71b0 !important;
+  min-width: 239px !important;
+  // display: none;
+}
 
 .ant-layout-sider {
-  height: 69rem !important;
+  height: 70rem !important; 
+  min-width: 239px !important;
+ background-color: #0f71b0 !important;
 }

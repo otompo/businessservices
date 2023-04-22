@@ -1,7 +1,7 @@
 @import '../../styles/contants.scss';
 
 .wrapper{
-    background: white;
+    background: #fff;
     overflow: hidden;
     .container{
         flex-direction: column;
@@ -36,6 +36,9 @@
             }
         }
         .bookingform {
+          border-radius: 4px;
+          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+          padding: 3rem;
           @media (max-width: $sm) {
            width: 300px;
         }
@@ -45,6 +48,18 @@
             margin: 0 auto;
           
             .formgroup {
+            //   @media (max-width: $sm) {               
+            //   input[type="text"],
+            //   input[type="tel"],
+            //   input[type="email"],
+            //   input[type="date"],
+            //   select,
+            //   textarea {
+               
+            //       width: 18rem !important;
+                
+            //   }
+            //  }
               display: flex;
               flex-direction: column;
               margin-bottom: 1rem;
@@ -53,24 +68,36 @@
                 margin-bottom: 0.5rem;
                 font-weight: bold;
               }
-          
+              .addressinput{
+                 
+                  width: 100%;
+              }
+
+              select{
+                width: 103% !important;
+                padding: 0.6rem;
+                border: 2px solid #ccc;
+                border-radius: 4px;
+              }
               input[type="text"],
               input[type="tel"],
-              input[type="email"],
-              input[type="date"],
-              select,
+              input[type="email"],            
               textarea {
                 padding: 0.5rem;
                 font-size: 1rem;
                 border: 2px solid #ccc;
                 border-radius: 4px;
-          
+                width: 100%;
+                  padding: 0.6rem;
                 &:focus {
                   outline: none;
                   border-color: #0077cc;
                 }
               }
-          
+              span{
+                color: red;
+                font-size: 1.4rem;
+              }
               select {
                 appearance: none;
                 background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 5'%3E%3Cpath fill='%230077cc' d='M0 0l5 5 5-5z'/%3E%3C/svg%3E") no-repeat right 0.75rem center/8px 10px;
@@ -92,7 +119,7 @@
               color: #fff;
               cursor: pointer;
               transition: all 0.2s;
-          
+              width: 103%;
               &:hover,
               &:focus {
                 background-color: #005ea8;

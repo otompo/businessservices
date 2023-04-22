@@ -1,68 +1,48 @@
-// import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Card from "./Card";
 import AdminLayout from "../layout/AdminLayout";
 import css from "./Dashboard.module.scss";
+import axios from "axios";
 
 const Dashboard = ({ children }) => {
-  // useEffect(() => {
-  //   getNewUsers();
-  //   getTotalUsers();
-  //   showCategory();
-  //   showBlogs();
-  //   showNewlyCreatedBlogs();
-  // }, []);
+  const [numbers, setNumbers] = useState([]);
 
-  // const showBlogs = async () => {
-  //   try {
-  //     const { data } = await axios.get(`/api/admin/resources`);
-  //     SetBlogs(data);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  useEffect(() => {
+    showNumbers();
+  }, []);
 
-  // const showNewlyCreatedBlogs = async () => {
-  //   try {
-  //     const { data } = await axios.get(`/api/admin/resources/new`);
-  //     setNewlyBlogs(data);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  const showNumbers = async () => {
+    try {
+      const { data } = await axios.get(`/api/numbers`);
+      setNumbers(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-  // const showCategory = async () => {
-  //   try {
-  //     const { data } = await axios.get(`/api/category`);
-  //     SetCategory(data);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  // const getNewUsers = async () => {
-  //   try {
-  //     const { data } = await axios.get(`/api/admin/users/limit`);
-  //     setUsers(data);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  // const getTotalUsers = async () => {
-  //   try {
-  //     const { data } = await axios.get(`/api/admin/users`);
-  //     setUsersTotal(data);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
   return (
     <AdminLayout title="Admin Dashboard">
       <div className={` ${css.container}`}>
-        <Card cade_title="Total Users" cade_total="5" />
-        <Card cade_title="Total Blogs" cade_total="33" />
-        <Card cade_title="Total Users" cade_total="45" />
+        <Card
+          cade_title="Total Users"
+          cade_total={numbers.users}
+          backgroundColor="#005ea8"
+        />
+        <Card
+          cade_title="Total Bookings"
+          cade_total={numbers.bookings}
+          backgroundColor="#9A00A8"
+        />
+        <Card
+          cade_title="Total Testimonials"
+          cade_total={numbers.testimonials}
+          backgroundColor="#005B34"
+        />
+        <Card
+          cade_title="Total Services"
+          cade_total={numbers.services}
+          backgroundColor="#E78906"
+        />
       </div>
     </AdminLayout>
   );

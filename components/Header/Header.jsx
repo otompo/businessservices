@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import css from "./Header.module.scss";
 import { BiPhoneCall, BiMenuAltRight } from "react-icons/bi";
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -7,8 +7,13 @@ import { getMenuStyles, headerVariants } from "../../utils/motion";
 import useOutsideAlerter from "../../hooks/useOutsideAlerter";
 import useHeaderShadow from "../../hooks/useHeaderShadow";
 import Link from "next/link";
+import { AuthContext } from "../../context";
 
 const Header = () => {
+  const {
+    state: { user },
+    dispatch,
+  } = useContext(AuthContext);
   const menuRef = useRef(null);
   const [menuOpened, setMenuOpened] = useState(false);
   const headerShadow = useHeaderShadow();
@@ -61,6 +66,14 @@ const Header = () => {
             </Link>
             <BiPhoneCall size={"25px"} />
           </li>
+          {user ? (
+            <li
+              onClick={() => setMenuOpened(false)}
+              style={{ color: "yellow", fontWeight: "bold" }}
+            >
+              <Link href="/admin">Dashboard</Link>
+            </li>
+          ) : null}
         </ul>
         {/* <div
           className={css.menuIcon}

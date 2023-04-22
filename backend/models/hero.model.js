@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const heroSchema = new Schema(
@@ -17,8 +17,19 @@ const heroSchema = new Schema(
     email: {
       type: String,
     },
-    content: {},
-    image: {
+    jobscompleted_title: {
+      type: String,
+    },
+    jobscompleted_number: {
+      type: Number,
+    },
+    happyclients_title: {
+      type: String,
+    },
+    happyclients_number: {
+      type: Number,
+    },
+    logo: {
       public_id: {
         type: String,
       },
@@ -31,6 +42,4 @@ const heroSchema = new Schema(
   { timestamps: true }
 );
 
-export default mongoose.models && mongoose.models.Hero
-  ? mongoose.models.Hero
-  : mongoose.model("Hero", heroSchema);
+module.exports = mongoose.model("Hero", heroSchema);

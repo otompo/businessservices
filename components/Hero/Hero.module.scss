@@ -17,8 +17,8 @@
 
             img {
                 @media (max-width: $sm ) {
-                    width: 13rem;
-                    height: 10rem;
+                    width: 18rem;
+                   height: 11rem
                 }
                 margin-bottom: 5rem;
             }
@@ -111,6 +111,7 @@
                 @media (max-width: $sm ) {
                     width: 22rem;
                     height: 26rem;
+                    margin-top: -110px;
                 }
                 margin-bottom: -5px;
             }

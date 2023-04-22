@@ -1,16 +1,15 @@
 const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
-// import { hashPassword } from "../utils/authHelpers";
-// import { nanoid } from "nanoid";
-// import shortId from "shortid";
+// const { nanoid } require("nanoid");
+// const shortId require ("shortid");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
-const signToken = (id, email) => {
-  return jwt.sign({ id, email }, process.env.JWT_SECRET, {
-    expiresIn: "5d",
-  });
-};
+// const signToken = (id, email) => {
+//   return jwt.sign({ id, email }, process.env.JWT_SECRET, {
+//     expiresIn: "5d",
+//   });
+// };
 
 // login user
 exports.loginUser = catchAsync(async (req, res, next) => {
@@ -58,6 +57,19 @@ exports.loginUser = catchAsync(async (req, res, next) => {
   // global.currentUser = { token, user };
 
   res.json({ token, user });
+});
+
+exports.logout = catchAsync(async (req, res) => {
+  res.clearCookie("token", { httpOnly: true });
+  return res.json({ message: "Signout success" });
+});
+
+exports.currentUser = catchAsync(async (req, res) => {
+  try {
+    res.json({ ok: true });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 exports.getallusers = catchAsync(async (req, res, next) => {

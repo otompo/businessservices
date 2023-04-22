@@ -1,8 +1,15 @@
 const router = require("express").Router();
-const { isAuth, authorizeRoles } = require("../middlewares/auth");
-const { loginUser, getallusers } = require("../controllers/auth.controllers");
+const { requireSignin, isAdmin } = require("../middlewares/auth");
+const {
+  loginUser,
+  getallusers,
+  logout,
+  currentUser,
+} = require("../controllers/auth.controllers");
 
 router.route("/login").post(loginUser);
-router.route("/users").get(isAuth, authorizeRoles("admin"), getallusers);
+router.route("/logout").get(logout);
+router.route("/currentadmin").get(requireSignin, isAdmin, currentUser);
+router.route("/users").get(requireSignin, isAdmin, getallusers);
 
 module.exports = router;

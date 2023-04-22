@@ -4,14 +4,21 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const connectDB = require("./config/dbConnect");
+// const cloudinary = require("cloudinary");
 const bodyParser = require("body-parser");
 const ErrorHandler = require("./middlewares/error");
 
 connectDB();
 
+// cloudinary.config({
+//   cloud_name: process.env.CLOUDINARY_NAME,
+//   api_key: process.env.CLOUDINARY_KEY,
+//   api_secret: process.env.CLOUDINARY_SECRET,
+// });
+
 //  routes imports
 
-const authRoutes = require("./routes/auth.routes");
+// const authRoutes = require("./routes/auth.routes");
 
 const app = express();
 
