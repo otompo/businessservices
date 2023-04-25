@@ -13,7 +13,7 @@ exports.createService = catchAsync(async (req, res, next) => {
 });
 
 exports.getServices = catchAsync(async (req, res, next) => {
-  const ourservices = await Ourservices.find({});
+  const ourservices = await Ourservices.find({}).sort({ createdAt: -1 });
 
   res.status(200).send(ourservices);
 });

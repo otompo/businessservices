@@ -1,24 +1,31 @@
-import { HiOutlineDesktopComputer } from "react-icons/hi";
-import { CiMobile1 } from "react-icons/ci";
+import { GiHealing, GiVacuumCleaner } from "react-icons/gi";
 import { MdWorkspacesOutline } from "react-icons/md";
+import { TfiHeadphoneAlt } from "react-icons/tfi";
+
 export const projectExperience = [
   {
-    name: "Website Design",
-    projects: 76,
-    icon: HiOutlineDesktopComputer,
+    name: "Online Support",
+    subtext: "TECHNICAL 24/7",
+    icon: TfiHeadphoneAlt,
     bg: "#286F6C",
   },
   {
-    name: "Mobile App Design",
-    projects: 63,
-    icon: CiMobile1,
+    name: "Health Expertise",
+    subtext: 47,
+    icon: GiHealing,
     bg: "#EEC048",
   },
   {
-    name: "Brand Identity",
-    projects: 47,
-    icon: MdWorkspacesOutline,
+    name: "Cleaning Expertise",
+    subtext: 67,
+    icon: GiVacuumCleaner,
     bg: "#F26440",
+  },
+  {
+    name: "Commitment",
+    subtext: "Latest Techniques and Equipment",
+    icon: MdWorkspacesOutline,
+    bg: "#0f71b0",
   },
 ];
 

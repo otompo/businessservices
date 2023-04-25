@@ -25,13 +25,7 @@ const Hero = () => {
             <br />
             Grace Business Services
           </motion.span>
-          <motion.span
-            className="secondaryText"
-            variants={fadeIn("left", "tween", 0.4, 1)}
-          >
-            {/* <p className={css.slogan}>
-              We provide professional health care and cleaning solutions
-            </p> */}
+          <motion.span variants={fadeIn("left", "tween", 0.4, 1)}>
             <Image src="/logos.png" alt="image" width={450} height={280} />
           </motion.span>
         </div>

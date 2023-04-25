@@ -51,23 +51,23 @@ exports.getFooter = catchAsync(async (req, res) => {
 
 exports.createHero = catchAsync(async (req, res) => {
   try {
-    const { hero, logo } = req.body;
-    const logoResult = await cloudinary.v2.uploader.upload(logo, {
-      folder: "gracebusiness",
-    });
+    const { hero } = req.body;
+    // const logoResult = await cloudinary.v2.uploader.upload(logo, {
+    //   folder: "gracebusiness",
+    // });
     const found = await Hero.findOne({ hero });
 
     if (found) {
-      await cloudinary.v2.uploader.destroy(found.logo.public_id);
+      // await cloudinary.v2.uploader.destroy(found.logo.public_id);
       // update
       const updated = await Hero.findOneAndUpdate(
         { hero },
         {
           ...req.body,
-          logo: {
-            public_id: logoResult.public_id,
-            url: logoResult.url,
-          },
+          // logo: {
+          //   public_id: logoResult.public_id,
+          //   url: logoResult.url,
+          // },
         },
         {
           new: true,
@@ -78,10 +78,10 @@ exports.createHero = catchAsync(async (req, res) => {
       // create
       const created = await new Hero({
         ...req.body,
-        logo: {
-          public_id: logoResult.public_id,
-          url: logoResult.url,
-        },
+        // logo: {
+        //   public_id: logoResult.public_id,
+        //   url: logoResult.url,
+        // },
       }).save();
       return res.json(created);
     }

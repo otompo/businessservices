@@ -54,7 +54,7 @@ const Header = () => {
             <Link href="#bookus">Book us</Link>
           </li>
           <li onClick={() => setMenuOpened(false)}>
-            <Link href="#people">Testimonials</Link>
+            <Link href="#testimonials">Testimonials</Link>
           </li>
 
           <li

@@ -1,6 +1,5 @@
 const Testimonials = require("../models/testimonials.model");
 const catchAsync = require("../utils/catchAsync");
-const AppError = require("../utils/appError");
 const cloudinary = require("cloudinary");
 const slugify = require("slugify");
 
@@ -13,17 +12,17 @@ cloudinary.config({
 exports.createTestimonial = catchAsync(async (req, res, next) => {
   const { name, image, message } = req.body;
 
-  // const result = await cloudinary.v2.uploader.upload(image, {
-  //   folder: "gracebusiness",
-  // });
+  const result = await cloudinary.v2.uploader.upload(image, {
+    folder: "gracebusiness",
+  });
   const testimonial = await new Testimonials({
     slug: slugify(name),
     name,
     message,
-    // image: {
-    //   public_id: result.public_id,
-    //   url: result.url,
-    // },
+    image: {
+      public_id: result.public_id,
+      url: result.url,
+    },
   }).save();
   res.status(200).send(testimonial);
 });
@@ -34,10 +33,10 @@ exports.updateTestimonial = catchAsync(async (req, res, next) => {
 
   const prevData = await Testimonials.findById(req.params.id);
 
-  // await cloudinary.v2.uploader.destroy(prevData.image.public_id);
-  // const result = await cloudinary.v2.uploader.upload(image, {
-  //   folder: "gracebusiness",
-  // });
+  await cloudinary.v2.uploader.destroy(prevData.image.public_id);
+  const result = await cloudinary.v2.uploader.upload(image, {
+    folder: "gracebusiness",
+  });
   if (image) {
     const update = await Testimonials.findOneAndUpdate(
       { slug },
@@ -45,10 +44,10 @@ exports.updateTestimonial = catchAsync(async (req, res, next) => {
         slug: slugify(name),
         name,
         message,
-        // image: {
-        //   public_id: result.public_id,
-        //   url: result.url,
-        // },
+        image: {
+          public_id: result.public_id,
+          url: result.url,
+        },
       },
       {
         new: true,
@@ -77,7 +76,7 @@ exports.getTestimonials = catchAsync(async (req, res, next) => {
 });
 
 exports.deleteTestimonial = catchAsync(async (req, res, next) => {
-  await Testimonials.findByIdAndDelete(req.params.id);
-  // await cloudinary.v2.uploader.destroy(data.image.public_id);
+  const data = await Testimonials.findByIdAndDelete(req.params.id);
+  await cloudinary.v2.uploader.destroy(data.image.public_id);
   res.json({ ok: true });
 });

@@ -18,25 +18,25 @@ const Auth = () => {
     dispatch,
   } = useContext(AuthContext);
 
-  useEffect(() => {
-    if (user?.token) getCurrentAdmin();
-  }, [user?.token]);
+  // useEffect(() => {
+  //   if (user?.token) getCurrentAdmin();
+  // }, [user?.token]);
 
-  const getCurrentAdmin = async () => {
-    try {
-      const { data } = await axios.get("/api/currentadmin");
-      setSuccess(false);
-    } catch (err) {
-      console.log(err.response.data.message);
-      router.push("/");
-    }
-  };
+  // const getCurrentAdmin = async () => {
+  //   try {
+  //     const { data } = await axios.get("/api/currentadmin");
+  //     setSuccess(false);
+  //   } catch (err) {
+  //     console.log(err.response.data.message);
+  //     router.push("/");
+  //   }
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
-      const { data } = await axios.post(`/api/login`, {
+      const { data } = await axios.post(`/api/auth/login`, {
         email,
         password,
       });
@@ -61,9 +61,9 @@ const Auth = () => {
     }
   };
 
-  if (!success) {
-    return <LoadingToRedirect />;
-  }
+  // if (!success) {
+  //   return <LoadingToRedirect />;
+  // }
 
   return (
     <div className={css.container}>
