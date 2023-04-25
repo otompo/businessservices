@@ -1,16 +1,8 @@
 const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
-const shortid = require("shortid");
-const slugify = require("slugify");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
-const { hashPassword } = require("../helpers/auth");
-
-// const signToken = (id, email) => {
-//   return jwt.sign({ id, email }, process.env.JWT_SECRET, {
-//     expiresIn: "5d",
-//   });
-// };
+const { hashPassword, comparePassword } = require("../helpers/auth");
 
 // login user
 exports.loginUser = catchAsync(async (req, res, next) => {
@@ -24,11 +16,13 @@ exports.loginUser = catchAsync(async (req, res, next) => {
   }
 
   // check for user with match email
-  const user = await User.findOne({ email, active: { $ne: false } }).select(
+  const user = await User.findOne({ email }).select(
     "+password -generatedPasword "
   );
 
-  if (!user || !(await user.comparePassword(password, user.password))) {
+  const match = await comparePassword(password, user.password);
+
+  if (!match) {
     return next(
       new AppError("User not found with such email or password", 401)
     );
@@ -91,7 +85,7 @@ exports.getallusers = catchAsync(async (req, res, next) => {
 
 exports.createUser = catchAsync(async (req, res) => {
   let { name, email, password, role } = req.body;
-
+  // console.log(req.body);
   if (!name) {
     return res.json({
       error: "Name is required",
@@ -110,10 +104,8 @@ exports.createUser = catchAsync(async (req, res) => {
   }
   // hash password
   let hashedPassword = await hashPassword(password);
-  let username = slugify(name) + shortid(3);
 
   const user = await new User({
-    username,
     name,
     email,
     password: hashedPassword,
@@ -155,14 +147,13 @@ exports.updateProfile = async (req, res, next) => {
         error: "Password is required and should be 6 characters long",
       });
     }
-    let username = slugify(`${name}-`) + shortid.generate();
+
     const hashedPassword = password ? await hashPassword(password) : undefined;
     const updated = await User.findByIdAndUpdate(
       id,
       {
         name: name || userFromDb.name,
         contactNum: contactNum || userFromDb.contactNum,
-        username: username || userFromDb.username,
         email: email || userFromDb.email,
         password: hashedPassword || userFromDb.password,
         // image: image || userFromDb.image,

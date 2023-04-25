@@ -2,7 +2,6 @@ const router = require("express").Router();
 const { requireSignin, isAdmin } = require("../middlewares/auth");
 const {
   getallusers,
-
   currentUser,
   createUser,
   getSingleUser,
