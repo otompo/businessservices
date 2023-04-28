@@ -63,63 +63,6 @@ export const workExp = [
   },
 ];
 
-export const comments = [
-  {
-    name: "Anamika Sandula",
-    comment:
-      "I have been a client of this company for years, and I am always impressed with the level of cleanliness and attention to detail they provide. Their healthcare cleaning services are second to none, and I have complete confidence in their ability to maintain a safe and healthy environment for my patients.",
-    img: "/people2.png",
-  },
-  {
-    name: "Anamika Sandula",
-    comment:
-      "The team at this company is fantastic. They are professional, reliable, and always go above and beyond to ensure that our facility is spotless. Their expertise in healthcare cleaning is invaluable, and we appreciate their dedication to keeping our patients and staff safe.",
-    img: "/people1.png",
-  },
-  {
-    name: "Anamika Sandula",
-    comment:
-      "I have used this company for both personal and professional cleaning services, and I cannot recommend them enough. Their attention to detail is exceptional, and they always leave my space looking and feeling fresh and clean. Their healthcare cleaning services are particularly impressive, and I feel confident knowing that they take every precaution to keep my family and clients safe.",
-    img: "/people2.png",
-  },
-  {
-    name: "Anamika Sandula",
-    comment:
-      "I am so impressed with the level of professionalism and care provided by this company. Their healthcare cleaning services are thorough and effective, and I appreciate their attention to detail and commitment to keeping our facility safe and clean. I highly recommend them to anyone in need of top-notch cleaning services.",
-    img: "/people1.png",
-  },
-  {
-    name: "Anamika Sandula",
-    comment:
-      "The team at this company is simply amazing. They are friendly, efficient, and incredibly skilled at what they do. Their healthcare cleaning services are exceptional, and I feel completely confident in their ability to keep our facility clean and safe. Thank you for all that you do!",
-    img: "/people2.png",
-  },
-  {
-    name: "Anamika Sandula",
-    comment:
-      "Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    img: "/people1.png",
-  },
-  {
-    name: "Anamika Sandula",
-    comment:
-      "Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    img: "/people2.png",
-  },
-  {
-    name: "Anamika Sandula",
-    comment:
-      "Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    img: "/people1.png",
-  },
-  {
-    name: "Anamika Sandula",
-    comment:
-      "Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    img: "/people2.png",
-  },
-];
-
 export const cleaningServices = [
   {
     title: "CLEAN ALL SURFACES & CABINETS",

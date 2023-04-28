@@ -18,7 +18,7 @@ const CleaningServices = () => {
         <div className={`${css.card_container}`}>
           {cleaningServices.map((data, i) => (
             <div className={css.card} key={i}>
-              <Image src={data.img} alt="img" width={350} height={350} />
+              <Image src={data.img} alt="img" width={250} height={250} />
               <h3>{data.title}</h3>
               <p>{data.description}</p>
             </div>

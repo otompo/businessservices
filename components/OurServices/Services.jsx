@@ -3,7 +3,7 @@ import { fadeIn, staggerContainer } from "../../utils/motion.js";
 import css from "./Services.module.scss";
 import { motion } from "framer-motion";
 
-const Services = () => {
+const Services = ({ ourservices }) => {
   return (
     <section className={css.wrapper}>
       <a className="anchor" id="services"></a>
@@ -18,6 +18,7 @@ const Services = () => {
         className={`paddings innerWidth flexCenter ${css.container}`}
       >
         {/* left side */}
+
         <div className={css.leftSide}>
           {healthService.map((paragraph, i) => {
             return (
@@ -26,7 +27,7 @@ const Services = () => {
                 className={css.exp}
                 key={i}
               >
-                <p className="primaryText">{paragraph.title}:</p>
+                <p className="primaryText">{paragraph.title}</p>
                 <span className="secondaryText">{paragraph.description}</span>
               </motion.div>
             );
@@ -34,6 +35,7 @@ const Services = () => {
         </div>
 
         {/* right */}
+
         <div className={css.rightSide}>
           {cleaningService.map((paragraph, i) => {
             return (

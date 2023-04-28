@@ -1,11 +1,12 @@
-import { comments, sliderSettings } from "../../utils/data";
+import { sliderSettings } from "../../utils/data";
 import css from "./Testimonials.module.scss";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
 import { footerVariants, staggerChildren } from "../../utils/motion";
 import Image from "next/image";
+import { Avatar } from "antd";
 
-const Testimonials = () => {
+const Testimonials = ({ testimonials }) => {
   return (
     <>
       <motion.section
@@ -29,20 +30,24 @@ const Testimonials = () => {
           <div className={`yPaddings ${css.comments}`}>
             {/* to use slider , we have to inlcude css in index.html head */}
             <Slider {...sliderSettings} className={css.slider}>
-              {comments.map((comment, i) => {
+              {testimonials?.map((testimonial, i) => {
                 return (
                   <div className={`flexCenter ${css.comment}`} key={i}>
-                    <Image
-                      src={comment.img}
-                      alt="image"
-                      width={100}
-                      height={100}
-                    />
-                    <p>{comment.comment}</p>
+                    {testimonial?.image?.url ? (
+                      <Image
+                        src={testimonial?.image?.url}
+                        alt="image"
+                        width={100}
+                        height={100}
+                      />
+                    ) : (
+                      <Avatar size={60}>{testimonial?.name[0]}</Avatar>
+                    )}
+
+                    <p>{testimonial.message}</p>
                     <div className={css.line}></div>
                     <div className={css.bio}>
-                      <span>{comment.name}</span>
-                      <span>{comment.post}</span>
+                      <span>{testimonial.name}</span>
                     </div>
                   </div>
                 );

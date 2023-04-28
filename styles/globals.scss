@@ -17,12 +17,12 @@
     margin: auto;
   }
 
-  width: 100%;
+  // width: 100%;
 }
 
 .paddings {
   @media (min-width: $sm) {
-    padding: 4rem;
+    padding: 3rem;
   }
 
 
@@ -114,7 +114,7 @@
   @media (max-width: $sm) {
     font-size: 1.5rem;
   }
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 

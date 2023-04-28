@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
-const Footer = () => {
+const Footer = ({ footer }) => {
   return (
     <>
       <motion.section
@@ -21,7 +21,12 @@ const Footer = () => {
           className={`innerWidth yPaddings flexCenter ${css.container}`}
         >
           <div className={css.footer_about}>
-            <Image src="/logos.png" alt="image" width={150} height={90} />
+            <Image
+              src="https://res.cloudinary.com/codesmart/image/upload/v1682603125/gracebusiness/logos_s9gstf.png"
+              alt="image"
+              width={150}
+              height={90}
+            />
             <p className={css.footer_about_text}>
               At Grace Business Services, we specialize in providing top-notch
               cleaning and healthcare services to our clients. With a focus on
@@ -45,11 +50,11 @@ const Footer = () => {
             <span className="primaryText">Address</span>
             <div className={css.row}>
               <GoLocation size={"25px"} />{" "}
-              <p className={css.text}>403 York Road Is9 6td Leads</p>
+              <p className={css.text}>{footer.address}</p>
             </div>
             <div className={css.row}>
               <BiPhoneCall size={"25px"} />{" "}
-              <p className={css.text}>07482673887</p>
+              <p className={css.text}>{footer.contact_number}</p>
             </div>
           </div>
 
@@ -83,6 +88,7 @@ const Footer = () => {
         <span className={css.copyrightText}>
           © Copyright {new Date().getFullYear()}, Grace Business Services
           <Link href="https://www.codesmartwebsoft.com/" target="blank">
+            {" "}
             Lovingly designed by Code Smart Websoft
           </Link>
         </span>

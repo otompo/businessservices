@@ -9,8 +9,8 @@ import Aboutus from "../components/Aboutus/Aboutus";
 import css from "../styles/App.module.scss";
 import Head from "next/head";
 import CalltoAction from "../components/CalltoAction/CalltoAction";
-const App = () => {
-  //don't forget to add font link in index.html
+import absoluteUrl from "next-absolute-url";
+const App = ({ hero, footer, testimonials }) => {
   return (
     <>
       <Head>
@@ -52,17 +52,45 @@ const App = () => {
       </Head>
       <div className={`bg-primary ${css.container}`}>
         <Header />
-        <Hero />
+        <Hero hero={hero} />
         <CalltoAction />
         <Services />
         <CleaningServices />
         <Aboutus />
         <Bookings />
-        <Testimonials />
-        <Footer />
+        <Testimonials testimonials={testimonials} />
+        <Footer footer={footer} />
       </div>
     </>
   );
 };
 
 export default App;
+
+export async function getServerSideProps({ req, res }) {
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=10, stale-while-revalidate=59"
+  );
+  const { origin } = absoluteUrl(req);
+  const [dataOne, dataThree, dataFour] = await Promise.all([
+    fetch(`${origin}/api/hero/hero`),
+    // fetch(`${origin}/api/about/about`),
+    fetch(`${origin}/api/footer/footer`),
+    fetch(`${origin}/api/testimonials`),
+  ]);
+  const [hero, footer, testimonials] = await Promise.all([
+    dataOne.json(),
+    // dataTwo.json(),
+    dataThree.json(),
+    dataFour.json(),
+  ]);
+  return {
+    props: {
+      hero,
+      // about,
+      footer,
+      testimonials,
+    },
+  };
+}

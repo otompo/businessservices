@@ -113,6 +113,21 @@ const Bookings = () => {
                 required
               />
             </div>
+            <div className={`${css.formgroup}`}>
+              <label htmlFor="email">
+                Email <span>*</span>
+              </label>
+              <input
+                type="email"
+                value={email}
+                id="email"
+                name="email"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                required
+              />
+            </div>
 
             <div className={`${css.formgroup}`}>
               <label htmlFor="phone-number">
@@ -145,21 +160,7 @@ const Bookings = () => {
                 </StandaloneSearchBox>
               </LoadScript>
             </div>
-            <div className={`${css.formgroup}`}>
-              <label htmlFor="email">
-                Email <span>*</span>
-              </label>
-              <input
-                type="email"
-                value={email}
-                id="email"
-                name="email"
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                required
-              />
-            </div>
+
             <div className={`${css.formgroup}`}>
               <label htmlFor="select-date">
                 Select Booking Date and Time <span>*</span>

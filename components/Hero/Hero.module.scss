@@ -8,20 +8,19 @@
         z-index: 1;
        
         .upperElements {
+            margin-top: -2rem !important;
             @media (max-width: $sm) {
                 justify-content: center;
                 text-align: center;
                 gap: 2rem;
-                
+                margin-top: 1rem !important;
             }
 
             img {
                 @media (max-width: $sm ) {
                     width: 18rem;
                    height: 11rem
-                }
-               
-                
+                }                
             }
             
             display: flex;
@@ -52,17 +51,16 @@
                 gap: 2rem;
                 justify-content: center;
             }
-            margin-top: 12rem;
+            margin-top: 10rem;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            .button {
-                
+            .button {                
                background-color: #ec60a9;
                color: #fff;
-               font-size: 1.5rem;
+               font-size: 1rem;
                font-weight: 500;
-               padding: 1rem;
+               padding: 0.8rem;
                cursor: pointer;
                border: 1px solid #fff;
                border-radius: 5px;
@@ -110,9 +108,9 @@
 
             img {
                 @media (max-width: $sm ) {
-                    width: 22rem;
-                    height: 26rem;
-                    margin-top: -56px;
+                    width: 20rem;
+                    height: 23rem;
+                    margin-top: -66px;
                 }
                 margin-bottom: -5px;
             }

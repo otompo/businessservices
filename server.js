@@ -21,7 +21,8 @@ app
       server.use(
         "/api",
         createProxyMiddleware({
-          target: "http://localhost:8000",
+          // target: "http://localhost:8000",
+          target: "https://backendapi.gracebusinessservices.co.uk",
           changeOrigin: true,
         })
       );
@@ -32,7 +33,7 @@ app
     });
     server.listen(port, (err) => {
       if (err) throw err;
-      console.log("> Server Ready...");
+      console.log("> SERVER IS READY");
     });
   })
   .catch((err) => {
