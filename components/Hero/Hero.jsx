@@ -29,6 +29,7 @@ const Hero = ({ hero }) => {
               alt="image"
               width={450}
               height={280}
+              lazy
             />
           </motion.span>
         </div>
@@ -41,7 +42,8 @@ const Hero = ({ hero }) => {
           <motion.img
             variants={slideIn("up", "tween", 0.5, 1.3)}
             src="/lady.png"
-            alt=""
+            alt="image"
+            lazy
           />
         </motion.div>
 

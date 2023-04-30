@@ -5,9 +5,11 @@ import { Modal, Avatar, Spin, List, Input } from "antd";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { BiEdit, BiTrash } from "react-icons/bi";
-// import moment from "moment";
-// const { confirm } = Modal;
+import { useRouter } from "next/router";
+
 const Testimonials = () => {
+  const router = useRouter();
+
   const [values, setValues] = useState({
     name: "",
     message: "",
@@ -20,7 +22,7 @@ const Testimonials = () => {
   const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
   const [imagePreview, setImagePreview] = useState("");
   const [keyword, setKeyword] = useState("");
-  // console.log(image);
+
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
@@ -103,6 +105,10 @@ const Testimonials = () => {
     u.name.toLowerCase().includes(keyword)
   );
 
+  const handleEdit = async (testimonial) => {
+    return router.push(`/admin/testimonials/${testimonial._id}`);
+  };
+
   return (
     <AdminLayout>
       <div className={css.container}>
@@ -134,11 +140,7 @@ const Testimonials = () => {
               <a onClick={() => handleDelete(testimonial)}>
                 <BiTrash size={30} color="red" />
               </a>,
-              <a
-              //   onClick={
-              //   () => handleDelete(testimonial)
-              // }
-              >
+              <a onClick={(e) => handleEdit(testimonial)}>
                 <BiEdit size={30} color="green" />
               </a>,
             ]}

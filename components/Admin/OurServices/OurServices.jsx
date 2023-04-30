@@ -1,12 +1,11 @@
 import css from "./OurServices.module.scss";
 import AdminLayout from "../../layout/AdminLayout";
 import { useEffect, useState } from "react";
-import { Modal, Avatar, Spin, List, Input } from "antd";
-// import moment from "moment";
+import { Modal, Spin, List, Input } from "antd";
+import { SyncOutlined } from "@ant-design/icons";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { BiEdit, BiTrash } from "react-icons/bi";
-const { confirm } = Modal;
 
 const OurServices = () => {
   const [values, setValues] = useState({
@@ -15,13 +14,13 @@ const OurServices = () => {
     loading: false,
   });
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [services, setServices] = useState([]);
-  const [image, setImage] = useState("");
-  const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
-  const [imagePreview, setImagePreview] = useState("");
   const [keyword, setKeyword] = useState("");
-  // console.log(image);
+  const [actionTriggered, setActionTriggered] = useState("");
+  const [current, setCurrent] = useState({});
+
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
@@ -51,7 +50,6 @@ const OurServices = () => {
         title: values.title,
         content: values.content,
       });
-      setImagePreview({});
       setValues({ ...values, title: "", content: "", loading: false });
       setSuccess(false);
       setIsModalVisible(false);
@@ -71,22 +69,6 @@ const OurServices = () => {
     }
   };
 
-  const handleImage = (e) => {
-    if (e.target.name === "image") {
-      const reader = new FileReader();
-      // setUploadButtonText(reader.name);
-      reader.onload = () => {
-        if (reader.readyState === 2) {
-          setImage(reader.result);
-          setImagePreview(reader.result);
-        }
-      };
-      reader.readAsDataURL(e.target.files[0]);
-      setUploadButtonText("Upload Image");
-      setImagePreview("Upload Image");
-    }
-  };
-
   const handleDelete = async (service) => {
     try {
       await axios.delete(`/api/ourservices/${service._id}`);
@@ -94,6 +76,23 @@ const OurServices = () => {
       toast.error("Service deleted");
     } catch (err) {
       console.log(err);
+    }
+  };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    try {
+      setSuccess(true);
+      setLoading(true);
+      await axios.put(`/api/ourservices/${current._id}`, current);
+      toast.success("updated");
+      setSuccess(false);
+      setLoading(false);
+      setIsModalVisible(false);
+    } catch (err) {
+      console.log(err.response);
+      setSuccess(false);
+      setLoading(false);
     }
   };
 
@@ -108,7 +107,13 @@ const OurServices = () => {
           <p>Manage Services</p>
         </div>
         <div className={css.rightcolumn}>
-          <button className={css.button} onClick={showModal}>
+          <button
+            className={css.button}
+            onClick={() => {
+              setIsModalVisible(true);
+              setActionTriggered("ACTION_1");
+            }}
+          >
             Add Service
           </button>
         </div>
@@ -133,9 +138,11 @@ const OurServices = () => {
                 <BiTrash size={30} color="red" />
               </a>,
               <a
-              //   onClick={
-              //   () => handleDelete(service)
-              // }
+                onClick={() => {
+                  setCurrent(service);
+                  setIsModalVisible(true);
+                  setActionTriggered("ACTION_2");
+                }}
               >
                 <BiEdit size={30} color="green" />
               </a>,
@@ -149,46 +156,88 @@ const OurServices = () => {
       />
 
       <Modal
-        title="+ Add service"
+        title={
+          actionTriggered == "ACTION_1" ? (
+            <span>+ Add Service</span>
+          ) : (
+            <span>Edit Service</span>
+          )
+        }
         open={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
         footer={false}
         width={700}
       >
-        <form
-          className={css.form}
-          onSubmit={handleSubmit}
-          encType="multipart/form-data"
-        >
-          <div className="form-group">
-            <input
-              type="text"
-              name="title"
-              value={values.title}
-              onChange={handleChange}
-              placeholder="Enter title"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <textarea
-              rows={12}
-              id="content"
-              value={values.content}
-              name="content"
-              onChange={handleChange}
-            ></textarea>
-          </div>
-
-          <button
-            type="submit"
-            className="btn btn-block btn-primary py-2"
-            disabled={values.loading ? true : false}
+        {actionTriggered == "ACTION_1" ? (
+          <form
+            className={css.form}
+            onSubmit={handleSubmit}
+            encType="multipart/form-data"
           >
-            {values.loading ? <Spin /> : "CREATE"}
-          </button>
-        </form>
+            <div className="form-group">
+              <input
+                type="text"
+                name="title"
+                value={values.title}
+                onChange={handleChange}
+                placeholder="Enter title"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <textarea
+                rows={12}
+                id="content"
+                value={values.content}
+                name="content"
+                onChange={handleChange}
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              className="btn btn-block btn-primary py-2"
+              disabled={values.loading ? true : false}
+            >
+              {values.loading ? <Spin /> : "CREATE"}
+            </button>
+          </form>
+        ) : (
+          <form
+            className={css.form}
+            onSubmit={handleUpdate}
+            encType="multipart/form-data"
+          >
+            <div className="form-group">
+              <input
+                type="text"
+                name="title"
+                value={current.title}
+                onChange={(e) =>
+                  setCurrent({ ...current, title: e.target.value })
+                }
+                placeholder="Enter title"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <textarea
+                rows={12}
+                id="content"
+                value={current.content}
+                name="content"
+                onChange={(e) =>
+                  setCurrent({ ...current, content: e.target.value })
+                }
+              ></textarea>
+            </div>
+
+            <button type="submit" className="btn btn-block btn-primary py-2">
+              {loading ? <SyncOutlined spin /> : "UPDATE"}
+            </button>
+          </form>
+        )}
       </Modal>
     </AdminLayout>
   );

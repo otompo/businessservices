@@ -1,8 +1,7 @@
 const Bookings = require("../models/bookings.model");
 const catchAsync = require("../utils/catchAsync");
-const nodemailer = require("nodemailer");
-const Mailgen = require("mailgen");
 const moment = require("moment");
+const { sendEmail } = require("../utils/sendEmail");
 
 exports.newBooking = catchAsync(async (req, res, next) => {
   const {
@@ -15,140 +14,117 @@ exports.newBooking = catchAsync(async (req, res, next) => {
     selectedOption,
   } = req.body;
 
-  let config = {
-    service: "gmail",
-    auth: {
-      user: "steeletimothy2000@gmail.com",
-      pass: "llgtrxgbfryrjjor",
-    },
-  };
+  const bodymessage = `
+  <html>
+      <head>
+          <style>
+          .main_header{
+            background-color: #0f71b0;
+            padding:5px;
+            margin:5px;
+            text-transform:uppercase
+          }
+          .main_header h2{
+            text-align:center;
+            color:#ffffff
+          }
+              table {
+                  border-collapse: collapse;
+                  width: 100%;
+                  margin-bottom: 20px;
+              }
+              th, td {
+                  border: 1px solid black;
+                  padding: 10px;
+                  text-align: left;
+              }
+              th {
+                  background-color: #0f71b0;
+                  color:#ffffff
+              }
+              .highlight {
+                  background-color: #ffe6e6;
+              }
+              #subsection{
+                // background-color: #EBEBEB;
+                margin:5px;
+                padding:5px;
+              }
+              #subsection span{
+               color:#383838;
+               font-weight:300;
+               font-family:   "font-family: "Times New Roman", Times, serif";
+              }
+              #subsection p{               
+               font-family:   "font-family: "Times New Roman", Times, serif";
+              }
+          </style>
+      </head>
+      <body>
+      <div class="main_header">
+        <h2>Grace Business Services</h2>
+      </div>
+      <div id="subsection">
+       
+      <h4>CLIENT NAME:<span> ${fullName}</span></h4>      
+      <h4>ADDRESS: <span> ${address}</span> </h4>
+      <h4>CLIENT CONTACT: <span> ${contactNum}</span> </h4>
+      <h4>CLIENT EMAIL: <span> ${email}</span> </h4>
+      <h4>ADDRESS: <span> ${address}</span> </h4>
+      <h4>SERVICE SELECTED: <span> ${selectedOption}</span> </h4>
+      <h4>BOOKED DATE: <span> ${moment(bookingDate).format("LLLL")}</span></h4>
+      <hr />
+      <h4>MESSAGE: </h4>
+      <p> ${message}</p>
+      </div>
+      
+          <h4>Thank you</h4>
+      </body>
+  </html>
+`;
 
-  let transporter = nodemailer.createTransport(config);
+  // const bookingdata = await new Bookings({
+  //   fullName,
+  //   email,
+  //   contactNum,
+  //   address,
+  //   message,
+  //   bookingDate,
+  //   selectedOption,
+  // }).save();
 
-  let MailGenerator = new Mailgen({
-    theme: "default",
-    product: {
-      name: "Grace Business Services",
-      link: "https://wanghana.org",
-    },
+  await sendEmail({
+    fromemail: email,
+    email: "info@gracebusinessservices.co.uk",
+    subject: "Order Placed",
+    html: bodymessage,
   });
 
-  let response = {
-    body: {
-      name: "Grace Business Services",
-      intro: `<h3>CLIENT NAME:</h3> ${fullName}`,
-      dictionary: {
-        statedate: `${moment(bookingDate).format("LLLL")}`,
-        address: `${address}`,
-      },
-      table: {
-        data: [
-          {
-            service: selectedOption,
-            contact: contactNum,
-            email: email,
-          },
-        ],
-      },
-
-      outro: `<h3>Message:</h3> ${message}`,
-    },
-  };
-
-  let mail = MailGenerator.generate(response);
-
-  let messageIfo = {
-    from: email,
-    to: "steeletimothy2000@gmail.com",
-    subject: "Order Placed",
-    html: mail,
-  };
-
-  const bookingdata = await new Bookings({
-    fullName,
-    email,
-    contactNum,
-    address,
-    message,
-    bookingDate,
-    selectedOption,
-  }).save();
-
-  transporter
-    .sendMail(messageIfo)
-    .then(() => {
-      return res.status(201).json({
-        msg: "Booking done successfully",
-        bookingdata,
-      });
-    })
-    .catch((error) => {
-      return res.status(500).json({ error });
-    });
+  return res.status(201).json({
+    msg: "Booking done successfully",
+    // bookingdata,
+  });
 });
 
 exports.getBookings = catchAsync(async (req, res, next) => {
   const data = await Bookings.find({}).sort({ createdAt: -1 });
   res.send(data);
 });
+// <h3>Hi Grace Business Services</h3>
+//  <table>
+//         <thead>
+//             <tr>
+//                 <th> Service Selected</th>
+//                 <th>Contact  </th>
+//                 <th>Email </th>
+//             </tr>
+//         </thead>
+//         <tbody>
+//             <tr>
+//                 <td>${selectedOption}</td>
+//                 <td>${contactNum}</td>
+//                 <td>${email}</td>
+//             </tr>
 
-exports.getbill = (req, res) => {
-  const { userEmail } = req.body;
-
-  let config = {
-    service: "gmail",
-    auth: {
-      user: "steeletimothy2000@gmail.com",
-      pass: "llgtrxgbfryrjjor",
-    },
-  };
-
-  let transporter = nodemailer.createTransport(config);
-
-  let MailGenerator = new Mailgen({
-    theme: "default",
-    product: {
-      name: "Grace Business Services",
-      link: "https://wanghana.org",
-    },
-  });
-
-  let response = {
-    body: {
-      name: "Daily Tuition",
-      intro: "Your bill has arrived!",
-      table: {
-        data: [
-          {
-            item: "Nodemailer Stack Book",
-            description: "A Backend application",
-            price: "$10.99",
-          },
-        ],
-      },
-      outro: "Looking forward to do more business",
-    },
-  };
-
-  let mail = MailGenerator.generate(response);
-
-  let message = {
-    from: userEmail,
-    to: userEmail,
-    subject: "Place Order",
-    html: mail,
-  };
-
-  transporter
-    .sendMail(message)
-    .then(() => {
-      return res.status(201).json({
-        msg: "you should receive an email",
-      });
-    })
-    .catch((error) => {
-      return res.status(500).json({ error });
-    });
-
-  // res.status(201).json("getBill Successfully...!");
-};
+//         </tbody>
+//     </table>

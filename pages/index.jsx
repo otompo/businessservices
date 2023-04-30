@@ -1,15 +1,31 @@
-import Services from "../components/OurServices/Services";
-import CleaningServices from "../components/CleaningServices/CleaningServices";
-import Footer from "../components/Footer/Footer";
-import Header from "../components/Header/Header";
-import Hero from "../components/Hero/Hero";
-import Testimonials from "../components/Testimonials/Testimonials";
-import Bookings from "../components/Bookings/Bookings";
-import Aboutus from "../components/Aboutus/Aboutus";
 import css from "../styles/App.module.scss";
 import Head from "next/head";
-import CalltoAction from "../components/CalltoAction/CalltoAction";
 import absoluteUrl from "next-absolute-url";
+import dynamic from "next/dynamic";
+import Testimonials from "../components/Testimonials/Testimonials";
+import CalltoAction from "../components/CalltoAction/CalltoAction";
+import Header from "../components/Header/Header";
+import Hero from "../components/Hero/Hero";
+
+const Services = dynamic(() => import("../components/OurServices/Services"), {
+  ssr: true,
+});
+const CleaningServices = dynamic(
+  () => import("../components/CleaningServices/CleaningServices"),
+  {
+    ssr: true,
+  }
+);
+const Footer = dynamic(() => import("../components/Footer/Footer"), {
+  ssr: false,
+});
+const Bookings = dynamic(() => import("../components/Bookings/Bookings"), {
+  ssr: true,
+});
+const Aboutus = dynamic(() => import("../components/Aboutus/Aboutus"), {
+  ssr: true,
+});
+
 const App = ({ hero, footer, testimonials }) => {
   return (
     <>

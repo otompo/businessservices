@@ -5,6 +5,7 @@ const {
   getTestimonials,
   deleteTestimonial,
   updateTestimonial,
+  getSingleTestimonials,
 } = require("../controllers/testimonials.conrollers");
 
 router
@@ -14,6 +15,7 @@ router
 
 router
   .route("/testimonials/:id")
+  .get(requireSignin, isAdmin, getSingleTestimonials)
   .delete(requireSignin, isAdmin, deleteTestimonial)
   .put(requireSignin, isAdmin, updateTestimonial);
 

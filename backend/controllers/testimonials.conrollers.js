@@ -28,18 +28,18 @@ exports.createTestimonial = catchAsync(async (req, res, next) => {
 });
 
 exports.updateTestimonial = catchAsync(async (req, res, next) => {
-  const { slug } = req.query;
   const { name, image, message } = req.body;
 
   const prevData = await Testimonials.findById(req.params.id);
+  let url = prevData?.image?.url;
 
-  await cloudinary.v2.uploader.destroy(prevData.image.public_id);
-  const result = await cloudinary.v2.uploader.upload(image, {
-    folder: "gracebusiness",
-  });
-  if (image) {
-    const update = await Testimonials.findOneAndUpdate(
-      { slug },
+  if (image !== url) {
+    await cloudinary.v2.uploader.destroy(prevData.image.public_id);
+    const result = await cloudinary.v2.uploader.upload(image, {
+      folder: "gracebusiness",
+    });
+    const update = await Testimonials.findByIdAndUpdate(
+      prevData._id,
       {
         slug: slugify(name),
         name,
@@ -71,7 +71,12 @@ exports.updateTestimonial = catchAsync(async (req, res, next) => {
 });
 
 exports.getTestimonials = catchAsync(async (req, res, next) => {
-  const testimonial = await Testimonials.find({}).sort({ createdAt: -1 });
+  const testimonials = await Testimonials.find({}).sort({ createdAt: -1 });
+  res.status(200).send(testimonials);
+});
+
+exports.getSingleTestimonials = catchAsync(async (req, res, next) => {
+  const testimonial = await Testimonials.findById(req.params.id);
   res.status(200).send(testimonial);
 });
 

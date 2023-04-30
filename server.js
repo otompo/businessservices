@@ -1,5 +1,5 @@
-const { createServer } = require("http");
-const { parse } = require("url");
+// const { createServer } = require("http");
+// const { parse } = require("url");
 const next = require("next");
 const express = require("express");
 const { createProxyMiddleware } = require("http-proxy-middleware");
@@ -21,8 +21,8 @@ app
       server.use(
         "/api",
         createProxyMiddleware({
-          // target: "http://localhost:8000",
-          target: "https://backendapi.gracebusinessservices.co.uk",
+          target: "http://localhost:8000",
+          // target: "https://backendapi.gracebusinessservices.co.uk",
           changeOrigin: true,
         })
       );

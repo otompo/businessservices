@@ -1,10 +1,13 @@
 import { sliderSettings } from "../../utils/data";
 import css from "./Testimonials.module.scss";
-import Slider from "react-slick";
+// import Slider from "react-slick";
 import { motion } from "framer-motion";
 import { footerVariants, staggerChildren } from "../../utils/motion";
 import Image from "next/image";
 import { Avatar } from "antd";
+import dynamic from "next/dynamic";
+
+const Slider = dynamic(() => import("react-slick"));
 
 const Testimonials = ({ testimonials }) => {
   return (
@@ -39,6 +42,7 @@ const Testimonials = ({ testimonials }) => {
                         alt="image"
                         width={100}
                         height={100}
+                        lazy
                       />
                     ) : (
                       <Avatar size={60}>{testimonial?.name[0]}</Avatar>
