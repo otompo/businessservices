@@ -1,5 +1,6 @@
 import React from "react";
 import { fadeIn, slideIn, staggerContainer } from "../../utils/motion";
+import { BiPhoneCall, BiMenuAltRight } from "react-icons/bi";
 import css from "./Hero.module.scss";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -61,6 +62,10 @@ const Hero = ({ hero }) => {
           >
             <Link href="#bookus">
               <button className={css.button}>Book Us</button>
+            </Link>
+            <Link href="tel:+07482673887">
+              <BiPhoneCall size={"25px"} />
+              {/* <button className={css.button}>Contact Us</button> */}
             </Link>
           </motion.div>
 

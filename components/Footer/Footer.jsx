@@ -54,7 +54,10 @@ const Footer = ({ footer }) => {
             </div>
             <div className={css.row}>
               <BiPhoneCall size={"25px"} />{" "}
-              <p className={css.text}>{footer.contact_number}</p>
+              <Link href={`tel:${footer.contact_number}`} className={css.text}>
+                {footer.contact_number}
+              </Link>
+              {/* <p className={css.text}>{footer.contact_number}</p> */}
             </div>
           </div>
 

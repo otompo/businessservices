@@ -3,9 +3,11 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  env: {
-    REACT_APP_GOOGLE_API_KEY: "AIzaSyA9_KO9N6wV-EAJq3mxUy94QkAlf5Mqgxo",
-  },
+  // env: {
+  //   API: "https://backendapi.gracebusinessservices.co.uk",
+  //   API: "http://localhost:8000/api",
+  //   NEXT_PUBLIC_API: "https://backendapi.gracebusinessservices.co.uk",
+  // },
   publicRuntimeConfig: {
     APP_NAME: "Grace Business Services",
     DOMAIN: "https://www.gracebusinessservices.co.uk",

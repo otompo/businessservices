@@ -191,7 +191,18 @@ const Bookings = () => {
                 onChange={(e) => setSelectedOption(e.target.value)}
               >
                 <option className="py-5 ">Select...</option>
-                {["Health", "Cleaning"].map((service) => (
+                {[
+                  "Nursing care",
+                  "Physical therapy",
+                  "Occupational therapy",
+                  "Speech therapy",
+                  "Medical social services",
+                  "Home health aide services",
+                  "Nutrition services",
+                  "Hospice and palliative care",
+                  "Medical equipment and supplies",
+                  "Cleaning",
+                ].map((service) => (
                   <option key={service} value={service} className="py-5 ">
                     {service}
                   </option>

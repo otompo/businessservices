@@ -36,6 +36,7 @@ export const cleaningService = [
       "Our cleaning service provides professional cleaning solutions for homes and businesses. We specialize in using environmentally friendly cleaning products and techniques to ensure that your space is not only clean but also safe for your family, employees, and customers. With our experienced and reliable cleaning staff, you can be confident that your space will be sparkling clean and hygienic.",
   },
 ];
+
 export const healthService = [
   {
     title: "Health Service",
@@ -113,6 +114,62 @@ export const cleaningServices = [
     description:
       "We also offer laundry services at an additional cost. Please inquire.",
     img: "/laundry.webp",
+  },
+];
+export const healthServices = [
+  {
+    title: "NURSING CARE",
+    description:
+      "This includes services such as wound care, medication management, and administering injections.",
+    img: "/nurse_cure.jpg",
+  },
+  {
+    title: "PHYSICAL THERAPY",
+    description:
+      "This involves exercises, stretches, and other activities to help patients regain strength, mobility, and flexibility.",
+    img: "/physical_therapy.jpg",
+  },
+  {
+    title: "OCCUPATIONAL THERAPY",
+    description:
+      "This focuses on helping patients regain their ability to perform daily activities such as bathing, dressing, and eating.",
+    img: "/occupational_therapy.jpg",
+  },
+  {
+    title: "SPEECH THERAPY",
+    description:
+      "This involves helping patients who have difficulty speaking, swallowing, or communicating due to an injury or medical condition.",
+    img: "/speech_therapy.jpg",
+  },
+  {
+    title: "MEDICAL SOCIAL SERVICES",
+    description:
+      "This includes providing counseling and support services to help patients and their families cope with the emotional and social aspects of illness.",
+    img: "/medical_social.svg",
+  },
+  {
+    title: "HOME HEALTH AIDE SERVICES",
+    description:
+      "This involves providing assistance with daily activities such as bathing, dressing, and grooming.",
+    img: "/aide_services.svg",
+  },
+  {
+    title: "NUTRITION SERVICES",
+    description:
+      "This includes providing education and counseling on healthy eating habits, as well as managing and monitoring special diets for patients with specific medical conditions.",
+    img: "/nutritionist.jpg",
+  },
+  {
+    title: "HOSPICE AND PALLIATIVE CARE",
+    description:
+      "This involves providing compassionate care for patients who have terminal illnesses or are nearing the end of their lives.",
+    img: "/palliative_care.jpg",
+  },
+  {
+    title: "MEDICAL EQUIPMENT AND SUPPLIES",
+    description:
+      "This includes providing and maintaining medical equipment such as wheelchairs, walkers, and hospital beds, as well as providing medical supplies such as bandages and catheters.",
+    img: "/medical_supplies.jpg",
   },
 ];
 
